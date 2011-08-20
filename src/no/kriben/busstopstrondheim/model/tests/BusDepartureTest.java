@@ -3,7 +3,6 @@ package no.kriben.busstopstrondheim.model.tests;
 import static org.junit.Assert.assertEquals;
 import no.kriben.busstopstrondheim.model.BusDeparture;
 
-
 import org.junit.Test;
 
 public class BusDepartureTest {
