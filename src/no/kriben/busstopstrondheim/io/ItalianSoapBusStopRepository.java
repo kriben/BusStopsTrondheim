@@ -16,7 +16,8 @@ public class ItalianSoapBusStopRepository implements BusStopRepository {
 
     private String username_;
     private String password_;
-
+    private List<BusStop> cached_ = null;
+    
     public ItalianSoapBusStopRepository(String username, String password) {
         assert !username.isEmpty();
         assert !password.isEmpty();
@@ -26,7 +27,14 @@ public class ItalianSoapBusStopRepository implements BusStopRepository {
 
     @Override
     public List<BusStop> getAll() {
-        return ItalianBusStopJsonParser.parseBusStops(getData());
+        if (cached_ == null) {
+            List<BusStop> busStops = ItalianBusStopJsonParser.parseBusStops(getData());
+            if (!busStops.isEmpty()) {
+                cached_ = busStops;
+            }    
+        }
+        
+        return cached_;
     }
 
     @Override
