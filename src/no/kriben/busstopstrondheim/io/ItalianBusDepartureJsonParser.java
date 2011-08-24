@@ -24,6 +24,9 @@ public class ItalianBusDepartureJsonParser {
                 JSONObject object = busStopsArray.getJSONObject(i);
 
                 String time = object.getString("orario");
+                // Keep only the string part of the departure time
+                time = time.substring(time.length() - 5);  
+                
                 String line = object.getString("codAzLinea");
 
                 BusDeparture busDeparture = new BusDeparture(line, time);

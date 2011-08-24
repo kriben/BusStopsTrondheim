@@ -45,10 +45,10 @@ public class ItalianBusDepartureJsonParserTest {
         assertEquals(2, busStops.size());
         BusDeparture departure1 = busStops.get(0);
         assertEquals("11", departure1.getLine());
-        assertEquals("21/08/2011 22:01", departure1.getTime());
+        assertEquals("22:01", departure1.getTime());
 
         BusDeparture departure2 = busStops.get(1);
         assertEquals("6", departure2.getLine());
-        assertEquals("21/08/2011 22:27", departure2.getTime());
+        assertEquals("22:27", departure2.getTime());
     }
 }
