@@ -91,4 +91,6 @@ public class UnofficalBusDepartureRepository implements BusDepartureRepository {
         }
         return "";
     }
+    
+    public void setStringCache(StringCache stringCache) {};
 }

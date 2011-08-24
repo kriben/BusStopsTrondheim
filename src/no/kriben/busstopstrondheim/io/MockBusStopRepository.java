@@ -53,4 +53,7 @@ public class MockBusStopRepository implements BusStopRepository {
         // TODO Auto-generated method stub
         return null;
     }
+    
+    
+    public void setStringCache(StringCache stringCache) {}
 }

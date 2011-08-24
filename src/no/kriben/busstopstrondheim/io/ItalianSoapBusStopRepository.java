@@ -17,6 +17,7 @@ public class ItalianSoapBusStopRepository implements BusStopRepository {
     private String username_;
     private String password_;
     private List<BusStop> cached_ = null;
+    private StringCache stringCache_ = new NullStringCache();
     
     public ItalianSoapBusStopRepository(String username, String password) {
         assert !username.isEmpty();
@@ -25,10 +26,26 @@ public class ItalianSoapBusStopRepository implements BusStopRepository {
         password_ = password;
     }
 
+    
+    public void setStringCache(StringCache stringCache) {
+        stringCache_ = stringCache;
+    }
+    
     @Override
     public List<BusStop> getAll() {
+        // Check if we have the bus stops parse already 
         if (cached_ == null) {
-            List<BusStop> busStops = ItalianBusStopJsonParser.parseBusStops(getData());
+            // Need to get the raw data from some where: is it cached?
+            String data = stringCache_.get();
+            
+            // If it is not in cache: get it from the slow server
+            if (data.length() == 0) { // Cant use isEmpty since android does not support it < 2.3
+                data = getData();    
+                stringCache_.set(data);
+            }
+            
+            // Now try to parse the data we have: and cache that result if successful
+            List<BusStop> busStops = ItalianBusStopJsonParser.parseBusStops(data);
             if (!busStops.isEmpty()) {
                 cached_ = busStops;
             }    

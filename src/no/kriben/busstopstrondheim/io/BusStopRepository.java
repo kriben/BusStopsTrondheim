@@ -11,4 +11,6 @@ public interface BusStopRepository {
     public BusStop getByCode(int code);
 
     public List<BusStop> getByCode(List<Integer> codes);
+    
+    public void setStringCache(StringCache stringCache);
 }
