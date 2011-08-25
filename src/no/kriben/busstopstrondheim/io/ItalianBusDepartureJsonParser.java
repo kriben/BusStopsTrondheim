@@ -28,8 +28,8 @@ public class ItalianBusDepartureJsonParser {
                 time = time.substring(time.length() - 5);  
                 
                 String line = object.getString("codAzLinea");
-
-                BusDeparture busDeparture = new BusDeparture(line, time);
+                String destination = object.getString("capDest").trim();
+                BusDeparture busDeparture = new BusDeparture(line, time, destination);
                 busStops.add(busDeparture);
             }
         } catch (JSONException e) {

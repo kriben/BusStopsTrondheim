@@ -47,7 +47,7 @@ public class UnofficalBusDepartureRepository implements BusDepartureRepository {
                 JSONObject object = forecastArray.getJSONObject(i);
                 String rute = object.getString("rute");
                 String time = object.getString("ankomst");
-                departures.add(new BusDeparture(rute, time));
+                departures.add(new BusDeparture(rute, time, ""));
             }
         } catch (JSONException e) {
             // TODO Auto-generated catch block

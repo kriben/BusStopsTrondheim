@@ -46,9 +46,11 @@ public class ItalianBusDepartureJsonParserTest {
         BusDeparture departure1 = busStops.get(0);
         assertEquals("11", departure1.getLine());
         assertEquals("22:01", departure1.getTime());
+        assertEquals("Dronningens gt.", departure1.getDestination());
 
         BusDeparture departure2 = busStops.get(1);
         assertEquals("6", departure2.getLine());
         assertEquals("22:27", departure2.getTime());
+        assertEquals("Munkegata - M2", departure2.getDestination());
     }
 }

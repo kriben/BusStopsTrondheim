@@ -10,8 +10,10 @@ public class BusDepartureTest {
     public void testConstruction() {
         String line = "5";
         String time = "23:34";
-        BusDeparture busDeparture = new BusDeparture(line, time);
+        String destination = "Buenget";
+        BusDeparture busDeparture = new BusDeparture(line, time, destination);
         assertEquals(busDeparture.getLine(), line);
         assertEquals(busDeparture.getTime(), time);
+        assertEquals(busDeparture.getDestination(), destination);
     }
 }
