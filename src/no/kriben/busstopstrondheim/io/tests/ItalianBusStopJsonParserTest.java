@@ -30,6 +30,6 @@ public class ItalianBusStopJsonParserTest {
         BusStop busStop = busStops.get(0);
         assertEquals("Spongdal", busStop.getName());
         assertEquals("1725", busStop.getId());
-        assertEquals(100000, busStop.getCode());
+        assertEquals(16011725, busStop.getCode());
     }
 }

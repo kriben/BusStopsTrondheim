@@ -35,7 +35,7 @@ public class ItalianBusStopJsonParser {
                 String codeAzNodo = object.getString("codAzNodo");
                 String name = extractNameFromDescription(description,
                         codeAzNodo);
-                int code = object.getInt("cinFermata");
+                int code = object.getInt("codAzNodo");
 
                 String nomeMobile = object.getString("nomeMobile");
                 String id = extractIdFromNomeMobile(nomeMobile);

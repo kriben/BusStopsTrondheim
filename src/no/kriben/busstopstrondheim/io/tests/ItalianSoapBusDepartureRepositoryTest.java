@@ -24,7 +24,7 @@ public class ItalianSoapBusDepartureRepositoryTest {
 
             ItalianSoapBusDepartureRepository repo = new ItalianSoapBusDepartureRepository(
                     username, password);
-            String data = repo.getData(101567);
+            String data = repo.getData(16011205);
             assertTrue(data.length() > 0);
         } catch (MalformedURLException e) {
             e.printStackTrace();

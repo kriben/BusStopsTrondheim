@@ -37,8 +37,8 @@ public class ItalianSoapBusDepartureRepository implements
 
     public String getData(int busStopId) throws MalformedURLException {
 
-        String SOAP_ACTION = "http://miz.it/infotransit/getUserRealTimeForecast";
-        String METHOD_NAME = "getUserRealTimeForecast ";
+        String SOAP_ACTION = "http://miz.it/infotransit/getUserRealTimeForecastByStop";
+        String METHOD_NAME = "getUserRealTimeForecastByStop";
         String NAMESPACE = "http://miz.it/infotransit";
         String URL = "http://st.atb.no/InfoTransit/userservices.asmx";
         try {
