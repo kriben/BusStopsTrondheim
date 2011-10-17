@@ -9,7 +9,7 @@ import no.kriben.busstopstrondheim.model.Position;
 public class MockBusStopRepository implements BusStopRepository {
 
     @Override
-    public List<BusStop> getAll() {
+    public List<BusStop> getAll(ProgressHandler progressHandler) {
         List<BusStop> busStops = new ArrayList<BusStop>();
 
         BusStop b1 = new BusStop("Johan Falkbergets Vei (mot byen)", "1205",
@@ -37,8 +37,8 @@ public class MockBusStopRepository implements BusStopRepository {
     }
 
     @Override
-    public List<BusStop> getByCode(List<Integer> codes) {
-        List<BusStop> allBusStops = getAll();
+    public List<BusStop> getByCode(List<Integer> codes, ProgressHandler progressHandler) {
+        List<BusStop> allBusStops = getAll(progressHandler);
         List<BusStop> filteredBusStops = new ArrayList<BusStop>();
         for (BusStop busStop : allBusStops) {
             if (codes.contains(busStop.getCode()))
@@ -49,7 +49,7 @@ public class MockBusStopRepository implements BusStopRepository {
     }
 
     @Override
-    public BusStop getByCode(int code) {
+    public BusStop getByCode(int code, ProgressHandler progressHandler) {
         // TODO Auto-generated method stub
         return null;
     }

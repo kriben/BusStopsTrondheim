@@ -1,13 +1,14 @@
 package no.kriben.busstopstrondheim.io.tests;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.List;
 import java.util.Properties;
 
 import no.kriben.busstopstrondheim.io.ItalianSoapBusStopRepository;
+import no.kriben.busstopstrondheim.model.BusStop;
 
 import org.junit.Test;
 
@@ -23,8 +24,11 @@ public class ItalianSoapBusStopRepositoryTest {
 
             ItalianSoapBusStopRepository repo = new ItalianSoapBusStopRepository(
                     username, password);
-            String data = repo.getData();
-            assertTrue(data.length() > 0);
+            MockProgressHandler progressHandler = new MockProgressHandler();
+            List<BusStop> data = repo.getAll(progressHandler);
+            assertTrue(data.size() > 0);
+            assertEquals(1.0, progressHandler.getCompleteFraction(), 0.001);
+            
         } catch (MalformedURLException e) {
             e.printStackTrace();
             fail("Url was malformed");
