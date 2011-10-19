@@ -41,20 +41,21 @@ public class ItalianSoapBusStopRepository implements BusStopRepository {
             
             // If it is not in cache: get it from the slow server
             if (data.length() == 0) { // Cant use isEmpty since android does not support it < 2.3
-                progressHandler.setProgress(0.25, "Downloading bus stop information. Please wait...");
+                progressHandler.setProgress(0.25, "Downloading bus stop information.\nPlease wait...");
                 data = getData();    
                 stringCache_.set(data);
+                progressHandler.setProgress(0.75, "Download complete.\nPlease wait...");
             }
             
             // Now try to parse the data we have: and cache that result if successful
-            progressHandler.setProgress(0.75, "Download complete. Please wait...");
+            progressHandler.setProgress(0.90, "Reading bus stops.\nPlease wait...");
             List<BusStop> busStops = ItalianBusStopJsonParser.parseBusStops(data);
             if (!busStops.isEmpty()) {
                 cached_ = busStops;
             }    
         }
         
-        progressHandler.setProgress(1.0, "Bus stop information coming up..");
+        progressHandler.setProgress(1.0, "Done..");
         return cached_;
     }
 
