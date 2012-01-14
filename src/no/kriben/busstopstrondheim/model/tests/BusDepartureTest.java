@@ -9,11 +9,13 @@ public class BusDepartureTest {
     @Test
     public void testConstruction() {
         String line = "5";
-        String time = "23:34";
+        String estimatedTime = "23:34";
+        String scheduledTime = "23:31";
         String destination = "Buenget";
-        BusDeparture busDeparture = new BusDeparture(line, time, destination);
+        BusDeparture busDeparture = new BusDeparture(line, scheduledTime, estimatedTime, destination);
         assertEquals(busDeparture.getLine(), line);
-        assertEquals(busDeparture.getTime(), time);
+        assertEquals(busDeparture.getEstimatedTime(), estimatedTime);
+        assertEquals(busDeparture.getScheduledTime(), scheduledTime);
         assertEquals(busDeparture.getDestination(), destination);
     }
 }

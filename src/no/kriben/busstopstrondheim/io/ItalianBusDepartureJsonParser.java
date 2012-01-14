@@ -23,13 +23,12 @@ public class ItalianBusDepartureJsonParser {
             for (int i = 0; i < busStopsArray.length(); i++) {
                 JSONObject object = busStopsArray.getJSONObject(i);
 
-                String time = object.getString("orario");
-                // Keep only the string part of the departure time
-                time = time.substring(time.length() - 5);  
-                
+                String estimatedTime = extractTime(object, "orario");
+                String scheduledTime = extractTime(object, "orarioSched");
+
                 String line = object.getString("codAzLinea");
                 String destination = object.getString("capDest").trim();
-                BusDeparture busDeparture = new BusDeparture(line, time, destination);
+                BusDeparture busDeparture = new BusDeparture(line, scheduledTime, estimatedTime, destination);
                 busStops.add(busDeparture);
             }
         } catch (JSONException e) {
@@ -37,6 +36,12 @@ public class ItalianBusDepartureJsonParser {
             e.printStackTrace();
         }
         return busStops;
+    }
+
+    private static String extractTime(JSONObject object, String id) throws JSONException {
+        String time = object.getString(id);
+        // Keep only the string part of the departure time
+        return time.substring(time.length() - 5);
     }
 
 }
