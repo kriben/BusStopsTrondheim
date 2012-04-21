@@ -17,7 +17,6 @@ public class ItalianSoapBusDepartureRepository implements
 
     private String username_;
     private String password_;
-    final private int NUM_HOURS = 6;
     final private int MAX_DEPARTURES = 50;
     
     public ItalianSoapBusDepartureRepository(String username, String password) {
@@ -56,7 +55,6 @@ public class ItalianSoapBusDepartureRepository implements
             request.addProperty(pi);
             request.addProperty("busStopId", new Integer(busStopId).toString());
             request.addProperty("nForecast", MAX_DEPARTURES);
-            request.addProperty("nHours", NUM_HOURS);
             
             SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
                     SoapEnvelope.VER11);
