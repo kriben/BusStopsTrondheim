@@ -5,7 +5,7 @@ import no.kriben.busstopstrondheim.io.MercatorProjectionUtil;
 
 import org.junit.Test;
 
-public class MercatorProjectUtilTest {
+public class MercatorProjectionUtilTest {
     @Test
     public void testMercatorLatitude() {
         double mercatorLatitude = 9201811.0;
